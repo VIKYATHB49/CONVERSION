@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SPEED</title>
+    <style>
+       
+body {
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+    font-family: Arial, sans-serif;
+    overflow-y: scroll; 
+    padding-top: 60px; 
+    overflow: hidden;
+}
+.nav-links a:hover {
+color: #ffea00;
+}
+video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+}
+.navbar-right a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.content {
+  margin-top: 60px;
+  padding: 20px;
+}
+    </style>
+</head>
+<body style="color: white;"><form style="float: left;">
+
+
+
+
+    <div class="navbar">
+        <div class="navbar-right">
+          <a href="INTERN1.html">TEMPERATURE</a>
+          <a href="SPEED.html">SPEED</a>
+        </div>
+      </div>
+      <div class="content">
+
+
+        
+
+    <video autoplay loop muted plays-inline>
+        <source src="SPEED.mp4" type="video/mp4">
+        
+    </video>
+    <div align="center">
+    <h1>SPEED CONVERTER</h1>
+    <div class="converter">
+        <label for="speed">ENTER SPEED</label><br>
+        <input type="number" id="speed" oninput="convertSpeed()" style="width: 300px; height: 20px;"><br><br>
+
+        <label for="fromUnit">FROM UNIT</label><br>
+        <select id="fromUnit" onchange="convertSpeed()">
+            <option value="mps">METER PER SECOND</option>
+            <option value="kmph">KILOMETER PER HOUR</option>
+            <option value="mph">MILES PER HOUR</option>
+            <option value="fps">FEET PER SECOND</option>
+            <option value="knots">KNOTS</option>
+        </select><br><br>
+        <label for="toUnit">TO UNITS</label><br>
+        <select id="toUnit" onchange="convertSpeed()">
+            <option value="mps">METER PER SECOND</option>
+            <option value="kmph">KILOMETER PER HOUR</option>
+            <option value="mph">MILES PER HOUR</option>
+            <option value="fps">FEET PER SECOND</option>
+            <option value="knots">KNOTS</option>
+        </select><br><br>
+        <p>CONVERTED SPEED <span id="result"></span></p>
+    </div>
+    </div>
+
+    <script>
+        function convertSpeed() {
+            const speed = parseFloat(document.getElementById("speed").value);
+            const fromUnit = document.getElementById("fromUnit").value;
+            const toUnit = document.getElementById("toUnit").value;
+            const resultElement = document.getElementById("result");
+
+            let convertedSpeed;
+
+            const units = {
+                mps: { name: "Meters per Second", factor: 1 },
+                kmph: { name: "Kilometers per Hour", factor: 3.6 },
+                mph: { name: "Miles per Hour", factor: 2.237 },
+                fps: { name: "Feet per Second", factor: 3.281 },
+                knots: { name: "Knots", factor: 1 / 1.944 }
+            };
+
+            if (fromUnit === toUnit) {
+                convertedSpeed = speed;
+            } else {
+                const fromFactor = units[fromUnit].factor;
+                const toFactor = units[toUnit].factor;
+                convertedSpeed = (speed * fromFactor) / toFactor;
+            }
+
+            resultElement.textContent = convertedSpeed.toFixed(2);
+        }
+    </script>
+       
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

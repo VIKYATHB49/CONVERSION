@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CONVERTER</title>
+    <style>
+
+body {
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+    font-family: Arial, sans-serif;
+    overflow-y: scroll; 
+    padding-top: 60px; 
+    overflow: hidden;
+}
+.nav-links a:hover {
+color: #ffea00;
+}
+video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+}
+.navbar-right a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.content {
+  margin-top: 60px;
+  padding: 20px;
+}
+
+    </style>
+</head>
+<body align="center" class="body" style= "background-repeat: no-repeat; background-size:cover;">
+
+
+
+    
+    <div class="navbar">
+        <div class="navbar-right">
+          <a href="INTERN1.html">TEMPERATURE</a>
+          <a href="SPEED.html">SPEED</a>
+        </div>
+      </div>
+      <div class="content">
+
+        
+        <video autoplay loop muted plays-inline>
+            <source src="TEMP.mp4" type="video/mp4">
+            
+        </video>
+    
+      
+
+            <div style="float: left; height: auto; width: auto;">
+                <h3>CELSIUS TO FAHRENHEIT</h3>
+                <input type="number" id="celsiusInput" placeholder="ENTER THE READING " style="width: 250px; height:35px;"><br>
+                <br>
+                <button onclick="convertCelsiusToFahrenheit()">CONVERT</button><br><br>
+                <label for="fahrenheitResult"></label>
+                <input type="number" id="fahrenheitResult" readonly style="width: 250px; height: 35px;">
+                <script>
+                    function convertCelsiusToFahrenheit() {
+                        const celsiusInput = document.getElementById("celsiusInput");
+                        const celsius = parseFloat(celsiusInput.value);
+                        if (!isNaN(celsius)) {
+                            const fahrenheit = (celsius * 9/5) + 32;
+                            const fahrenheitResult = document.getElementById("fahrenheitResult");
+                            fahrenheitResult.value = fahrenheit;
+                        } else {
+                            alert("PLEASE THE VALID NUMBER OF CELSIUS");
+                        }
+                    }
+                </script>
+            </div>
+
+
+     
+            <div style="float: right; height: auto; width: auto;">
+                <h3>FAHRENHEIT TO CELSIUS</h3>
+            <input type="number" id="fahrenheitInput" placeholder="ENTER THE READING " style="width: 250px; height:35px;"><br><br>
+            <button onclick="convertToFahrenheit()">CONVERT</button><br><br>
+            <label for="fahrenheitResult"></label>
+            <input type="number" id="result" readonly style="width: 250px; height: 35px;">
+            <script>
+                function convertToFahrenheit() {
+                    const fahrenheitInput = document.getElementById("fahrenheitInput").value;
+                    const celsius = (parseFloat(fahrenheitInput) - 32) * 5/9;
+                    const resultElement = document.getElementById("result");
+                    resultElement.value = celsius;
+                }
+            </script>
+            </div>
+
+
+
+
+
+      </div>
+    
+
+        
+            </body>
+</html>
